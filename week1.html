@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git and GitHub for Absolute Beginners | CSDiaries</title>
+<meta name="description" content="What Git and GitHub are, the commands you need, and how to put your first project online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="index.html">CSDiaries</a>
+  <nav><a href="index.html#posts">Posts</a><a href="index.html#about">About</a></nav>
+</div></header>
+
+<main class="wrap">
+<article>
+  <h1>Git and GitHub for Absolute Beginners</h1>
+  <p class="meta">Week 1 · October 2026</p>
+
+  <p>Imagine writing an assignment and saving copies like <code>final.docx</code>, <code>final2.docx</code>, <code>final_REAL.docx</code>. Now imagine ten people doing that on the same project. That mess is the problem Git solves. This week I learned how it works, and I used it to publish this very blog.</p>
+
+  <h2>Git vs GitHub</h2>
+  <p>These two names are often mixed up, but they are different things.</p>
+  <ul>
+    <li><strong>Git</strong> is a tool installed on your computer. It tracks every change you make to your files, like save points in a video game.</li>
+    <li><strong>GitHub</strong> is a website that stores your Git projects online, so you can back them up, share them, and work with others.</li>
+  </ul>
+  <p>Git works without GitHub. GitHub is just a convenient place to keep your Git projects.</p>
+
+  <h2>Key words to know</h2>
+  <ul>
+    <li><strong>Repository (repo):</strong> a project folder that Git is tracking.</li>
+    <li><strong>Commit:</strong> a saved snapshot of your project, with a message describing what changed.</li>
+    <li><strong>Branch:</strong> a separate line of work. The default one is usually called <code>main</code>.</li>
+    <li><strong>Remote:</strong> the online copy of your repo (on GitHub).</li>
+    <li><strong>Push / Pull:</strong> push sends your commits to GitHub; pull brings new changes from GitHub to your computer.</li>
+  </ul>
+
+  <h2>The three-step workflow</h2>
+  <p>Every change you save follows the same path: edit files, <strong>stage</strong> them (choose what goes into the snapshot), then <strong>commit</strong> them (take the snapshot). Think of it as putting items in a box, then sealing the box with a label.</p>
+
+  <h2>Setting up Git</h2>
+  <p>After installing Git, tell it who you are. This is done once:</p>
+  <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+
+  <h2>Your first repository</h2>
+  <p>Open a terminal inside your project folder and run:</p>
+  <pre><code>git init                    # start tracking this folder
+git status                  # see what changed
+git add .                   # stage all changes
+git commit -m "first version"   # save the snapshot
+git log --oneline           # view your history</code></pre>
+  <p><code>git status</code> is the command I used most while learning. It tells you what Git sees and what to do next.</p>
+
+  <h2>Sending it to GitHub</h2>
+  <p>First create an empty repository on GitHub (click <strong>New repository</strong>). Then connect your folder to it and push:</p>
+  <pre><code>git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/my-blog.git
+git push -u origin main</code></pre>
+  <p>The <code>-u</code> only matters the first time. After that, <code>git push</code> is enough.</p>
+
+  <h2>Daily routine</h2>
+  <p>Once everything is set up, saving your work online takes three commands:</p>
+  <pre><code>git add .
+git commit -m "describe what you changed"
+git push</code></pre>
+
+  <h2>Branches in one minute</h2>
+  <p>A branch lets you try something new without touching your working code. If the experiment works, you merge it back. If not, you delete the branch and nothing is lost.</p>
+  <pre><code>git branch new-feature       # create a branch
+git checkout new-feature     # switch to it
+git checkout main            # go back
+git merge new-feature        # bring the changes into main</code></pre>
+
+  <h2>Mistakes I made</h2>
+  <ul>
+    <li><strong>Forgetting to commit before pushing.</strong> <code>git push</code> only sends commits, not unsaved changes. Run <code>git status</code> first.</li>
+    <li><strong>Vague commit messages</strong> like "update". Write what actually changed, for example "add Week 1 post".</li>
+    <li><strong>Creating the GitHub repo with a README, then pushing a local repo.</strong> The two histories clash. Start with an empty repo if you already have local files.</li>
+    <li><strong>Typing the wrong remote URL.</strong> Check it with <code>git remote -v</code>.</li>
+  </ul>
+
+  <h2>Publishing with GitHub Pages</h2>
+  <p>GitHub can host a static website for free. In your repo, open <strong>Settings → Pages</strong>, choose the <code>main</code> branch, and save. After a couple of minutes your site is live at <code>https://YOUR-USERNAME.github.io/my-blog/</code>. Every time you push, it updates automatically.</p>
+
+  <a class="back" href="index.html#posts">Back to all posts</a>
+</article>
+</main>
+
+<footer><div class="wrap">© 2026 CSDiaries</div></footer>
+</body>
+</html>
